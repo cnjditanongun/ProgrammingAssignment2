@@ -1,25 +1,44 @@
 createCacheMatrix <- function(x = matrix()) {
-  cache <- NULL
-  gMatrix <- function() {
+  
+  cachecache <- NULL                                                  ## starts as Null or 0
+  
+  gMatrix <- function() {                                             ## get smatrix
+    
     x
+    
   }
-  cacheSet <- function(inverse) {
-    cache <<- inverse
+  
+  cacheSet <- function(inverse) {                                   ##s set cahce
+    
+    cachecache <<- inverse
+    
   }
-  gCache <- function() {
-    cache
+  
+  gCache <- function() {                                                  ## get chache
+    
+    cachecache
+    
   }
-  list(gMatrix = gMatrix, cacheSet = cacheSet, gCache = gCache)
+  
+  list(gMatrix = gMatrix, cacheSet = cacheSet, gCache = gCache)           ## list of everthing is equal to everything
 }
 
 
-solveCache <- function(x, ...) {
-  cache <- x$ggCache()
-  if (is.null(cache)) {
+solveCache <- function(x, ...) {                                        ## this is the code for solving the cache matrix
+  
+  cachecache <- x$ggCache()                                             
+  
+  if (is.null(cachecache)) {
+    
     y <- x$gMatrix()
-    cache <- solve(y, ...)
-    x$cacheSet(cache)
-    return(cache)
+    
+    cachecache <- solve(y, ...)
+    
+    x$cacheSet(cachecache)
+    
+    return(cachecache)
+    
   }
-  cache
+  
+  cachecache
 }
